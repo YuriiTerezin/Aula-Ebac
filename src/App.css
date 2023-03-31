@@ -1,10 +1,38 @@
+html {
+  scroll-snap-type: y mandatory;
+}
+
 .App {
   background-color: rgb(0, 255, 179);
   height: 100vh;
+  display: grid;
+  place-items: center;
 }
 
-.app_video {
-  height: 800px;
+/* Da a estilização para o bloco de vídeos */
+
+.app_videos {
+  height: 100vh;
+  max-height: 800px;
   width: 80%;
+  max-width: 500px;
   border: 1px solid black;
+  border-radius: 20px;
+  overflow: scroll;
+  scrollbar-width: none;
+  scroll-snap-type: y mandatory;
+  position: relative;
+}
+
+/* Esconde a srocol-bar no Chrome, Safari e Opera */
+
+.app_videos::-webkit-scrollbar {
+  display: none;
+}
+
+/* Esconde a srocol-bar no Explorer, Edge e FireFox */
+
+.app_videos {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
