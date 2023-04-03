@@ -1,31 +1,45 @@
-
+import React, { useEffect, useState } from "react"
 import './App.css';
 import Video from "./pages/Video"
+import db from "./config/firebase"
+import { collection, getDocs } from "firebase/firestore/lite";
 
-//Este arquivo será o responsável pela conexão com o banco de dados
+// Este arquivo será o responsável pela conexão com o banco de dados
 
 function App() {
+
+  // Esta parte serve para renderizar as informações do Banco de dados, trazendo e listando para o usuario
+  const [video, setVideos] = useState([])
+
+  async function getVideos() {
+    const videosCollection = collection(db, "videos")
+    const videosSnapshot = await getDocs(videosCollection)
+    const videosList = videosSnapshot.docs.map(doc => doc.data())
+    setVideos(videosList)
+  }
+
+  useEffect(() => {
+    getVideos();
+  }, [])
+
   return (
     <div className="App">
       <div className='app_videos'>
-        <Video 
-          likes={101}
-          messages={202}
-          shares={303}
-          name="Yurii"
-          descripition="Gato louco sem controle"
-          music="Musica de ação"
-          url="https://poqlymuephttfsljdabn.supabase.co/storage/v1/object/public/jornadadev/brecker2.mp4"
-        />
-        <Video 
-          likes={404}
-          messages={505}
-          shares={606}
-          name="Locoo"
-          descripition="Gato fofo brincando"
-          music="Sem música"
-          url="https://privaty.com.br/wp-content/uploads/2023/03/gato-1.mp4"
-        />
+
+        {video.map((item) => {
+          return (
+            <Video
+              likes={item.likes}
+              messages={item.messages}
+              shares={item.shares}
+              name={item.name}
+              descripition={item.descripition}
+              music={item.music}
+              url={item.url}
+            />
+          )
+        })}
+
       </div>
     </div>
   );
