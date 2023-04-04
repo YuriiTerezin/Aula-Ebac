@@ -8,6 +8,11 @@ import { collection, getDocs } from "firebase/firestore/lite";
 
 function App() {
 
+  let maxHeight;
+    if (window.innerHeight <= 800){
+      maxHeight = window.innerHeight
+    }
+  
   // Esta parte serve para renderizar as informações do Banco de dados, trazendo e listando para o usuario
   const [video, setVideos] = useState([])
 
@@ -23,7 +28,8 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
+    // Faz a tela se adaptar com a maioria dos celulares
+    <div className="App" style={{ maxHeight: maxHeight + "px"}}>
       <div className='app_videos'>
 
         {video.map((item) => {

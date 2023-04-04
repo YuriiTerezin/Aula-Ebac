@@ -53,3 +53,11 @@
     }
 }
 
+@media only screen and (max-width: 440px){
+    .video_footer {
+        bottom: 22%;
+    }
+    .video_footer_titulo {
+        width: 78%;
+    }
+    }
