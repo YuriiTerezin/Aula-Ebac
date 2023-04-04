@@ -34,7 +34,7 @@ function App() {
 
         {video.map((item) => {
           return (
-            <Video
+            <Video 
               likes={item.likes}
               messages={item.messages}
               shares={item.shares}
