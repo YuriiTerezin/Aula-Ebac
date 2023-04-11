@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import VideoFooter from './components/footer/VideoFooter'
 import VideoSidebar from './components/sidebar/VideoSidebar'
+import VideoAdd from './components/add/VideoAdd'
 import "./video.css"
 
 function Video({ likes, messages, shares, name, descripition, music, url }) {
@@ -22,6 +23,7 @@ function Video({ likes, messages, shares, name, descripition, music, url }) {
 
   }
 
+  // Se o video foi iniciado entrará em loop
   return (
     <div className='video'>
       <video className='video_player'
@@ -40,6 +42,8 @@ function Video({ likes, messages, shares, name, descripition, music, url }) {
         descripition={descripition}
         music={music}
       />
+
+      <VideoAdd />
 
     </div>
   )

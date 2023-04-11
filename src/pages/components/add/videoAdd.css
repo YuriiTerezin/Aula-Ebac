@@ -1,0 +1,13 @@
+.add_video {
+    position: absolute;
+    right: 10px;
+    top: 3%;
+    color: white;
+}
+
+.video_sidebar_add {
+    color: white;
+    bottom: 5px;
+    right: 30px;
+    height: 45px;
+}
